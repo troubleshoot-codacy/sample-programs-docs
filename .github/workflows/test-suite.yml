@@ -1,0 +1,50 @@
+# This workflow will install Python dependencies, download Docker images, and test every script in the repo
+
+name: Glotter
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches:
+      - 'main'
+    paths:
+      - 'archive/**'
+      - 'test/**'
+      - '.glotter.yml'
+      - '.github/workflows/test-suite.yml'
+      - 'pyproject.toml'
+      - 'poetry.lock'
+      - '!**/README.md'
+
+jobs:
+  testing:
+    name: "Test Suite"
+
+    strategy:
+      fail-fast: true
+      matrix:
+        python-version: ["3.11"]
+        poetry-version: ["1.8.0"]
+        os: [ubuntu-latest]
+        num_batches: [6]
+
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Run Poetry Image
+      uses: abatilo/actions-poetry@v3
+      with:
+        poetry-version: ${{ matrix.poetry-version }}
+        
+    - name: Install Dependencies
+      run: poetry install
+        
+    - name: Download Docker images, Test All Sample Programs, Remove Docker Images
+      run: poetry run glotter batch ${{ matrix.num_batches }}  --parallel --remove
