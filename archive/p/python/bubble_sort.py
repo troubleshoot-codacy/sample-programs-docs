@@ -14,6 +14,8 @@ def bubble_sort(xs):
         return [x0] + pass_list(xs[1:])
     return reduce(lambda acc, _: pass_list(acc), xs, xs[:])
 
+def test_bubble_sort():
+    assert bubble_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
 
 def input_list(list_str):
     return [int(x.strip(" "), 10) for x in list_str.split(',')]
