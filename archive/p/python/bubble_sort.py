@@ -18,6 +18,9 @@ def bubble_sort(xs):
 def input_list(list_str):
     return [int(x.strip(" "), 10) for x in list_str.split(',')]
 
+def test_input_list():
+    assert input_list('1, 2, 3, 4, 5') == [1, 2, 3, 4, 5]
+
 def next_hurdle(setofpoints, pivot, final_list):
     z = setofpoints
     final_list = final_list[1:]
