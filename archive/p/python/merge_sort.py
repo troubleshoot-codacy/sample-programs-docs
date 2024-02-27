@@ -30,6 +30,24 @@ def exit_with_error():
     print('Usage: please provide a list of at least two integers to sort in the format "1, 2, 3, 4, 5"')
     sys.exit(1)
 
+def prims_algorithm(weights):
+    num_verticies = len(weights)
+    map_c, map_e = {ind: max([elem for row in weights for elem in row]) +
+                         1 for ind in range(num_verticies)}, {ind: None for ind in range(num_verticies)}
+    set_f, set_q = set(), set(range(num_verticies))
+    while len(set_q) > 0:
+        v = [i for i in set_q if map_c[i] == min(
+            [map_c[item] for item in set_q])][0]
+        set_q.remove(v)
+        set_f.add(v)
+        set_f.add(map_e[v]) if map_e[v] is not None else None
+        for w in range(num_verticies):
+            if v == w:
+                continue
+            if w in set_q and 0 < weights[w][v] <= map_c[w]:
+                map_c[w] = weights[w][v]
+                map_e[w] = v
+    return sum([weights[v][w] for v, w in map_e.items() if v is not None and w is not None])
 
 def main(args):
     try:

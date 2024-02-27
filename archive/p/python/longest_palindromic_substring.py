@@ -29,6 +29,16 @@ def longestPalindrome(string):
 
     return longest
 
+def findMax(arr):
+    maxSum = 0
+    for i in range(len(arr)):
+        val = arr.pop(0)
+        arr.append(val)
+        sum_ = [ele*j for j,ele in enumerate(arr)]
+        sum_ = sum(sum_)
+        if sum_ > maxSum:
+            maxSum = sum_
+    return maxSum
 
 if __name__ == '__main__':
     if (len(sys.argv) < 2):
