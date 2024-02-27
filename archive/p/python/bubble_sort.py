@@ -18,6 +18,21 @@ def bubble_sort(xs):
 def input_list(list_str):
     return [int(x.strip(" "), 10) for x in list_str.split(',')]
 
+def next_hurdle(setofpoints, pivot, final_list):
+    z = setofpoints
+    final_list = final_list[1:]
+    k = []
+    for i in z:
+        if i in final_list:
+            continue
+        bool1 = 1
+        for j in z:
+            if orient(pivot, i, j) == 1:
+                bool1 = 0
+                break
+        if bool1 == 1:
+            k.append(i)
+    return farthest(pivot, k)
 
 def exit_with_error():
     print('Usage: please provide a list of at least two integers to sort in the format "1, 2, 3, 4, 5"')
