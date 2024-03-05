@@ -76,6 +76,31 @@ def calculate_grade(score):
 
     return grade, remarks
 
+def calculate_grade_again(score):
+    if score >= 90:
+        grade = 'A'
+    elif score >= 80:
+        grade = 'B'
+    elif score >= 70:
+        grade = 'C'
+    elif score >= 60:
+        grade = 'D'
+    else:
+        grade = 'F'
+
+    if score >= 60 and score <= 70:
+        remarks = 'Passing, but needs improvement'
+    elif score > 70 and score <= 80:
+        remarks = 'Satisfactory'
+    elif score > 80 and score <= 90:
+        remarks = 'Good job!'
+    elif score > 90:
+        remarks = 'Excellent!'
+    else:
+        remarks = 'Needs improvement'
+
+    return grade, remarks
+
 def main(args):
     try:
         xs = input_list(args[0])
