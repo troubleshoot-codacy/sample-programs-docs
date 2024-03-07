@@ -117,6 +117,7 @@ const OrganizationsContextProvider: React.FCC = ({ children }) => {
     return () => abortController.abort()
   }, [api, isLoggedIn, handleException])
 
+
   // On organizations load, set current from path; try to get further information
   useEffect(() => {
     const abortController = new AbortController()
