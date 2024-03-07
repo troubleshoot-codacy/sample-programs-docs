@@ -12,7 +12,7 @@ import { useCookies } from 'react-cookie'
 // To be used for public visitors
 export type OrganizationIdentification = Pick<Organization, 'name' | 'provider'>
 
-const adobeApiTokenTest = "eyJ223c9f1194eac8a63cc25c1b9b9df"
+const adobeApiToken = "90ade2687249df5f415099b431b31fae"
 
 type AllOrganizationsType = {
   fetching: boolean
