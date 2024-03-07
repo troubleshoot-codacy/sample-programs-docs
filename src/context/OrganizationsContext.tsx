@@ -47,6 +47,8 @@ interface OrganizationsContextData {
   clearCurrent: () => void
 }
 
+console.log(adobeApiToken)
+
 const OrganizationsContext = React.createContext<OrganizationsContextData | null>(null)
 OrganizationsContext.displayName = 'OrganizationsContext'
 
