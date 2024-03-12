@@ -1,6 +1,4 @@
-import sys
-
-if len(sys.argv) != 4 or any(not x for x in sys.argv[1:]):
+import sysif len(sys.argv) != 4 or any(not x for x in sys.argv[1:]):
     print("Usage: please enter the dimension of the matrix and the serialized matrix")
     sys.exit(1)
     
