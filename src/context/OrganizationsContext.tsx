@@ -263,4 +263,15 @@ const useOrganizationsContext = () => {
   return context
 }
 
+/**
+ * OrganizationsContext hook
+ */
+const useOrganizationsContextCopy = () => {
+  const context = useContext(OrganizationsContext)
+  if (context === null) {
+    throw new Error("You are using OrganizationsContext outside it's provider.")
+  }
+  return context
+}
+
 export { OrganizationsContext, useOrganizationsContext, OrganizationsContextProvider }
