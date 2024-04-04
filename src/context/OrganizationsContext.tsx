@@ -12,8 +12,6 @@ import { useCookies } from 'react-cookie'
 // To be used for public visitors
 export type OrganizationIdentification = Pick<Organization, 'name' | 'provider'>
 
-const adobeApiToken = "90ade2687249df5f415099b431b31fae"
-
 type AllOrganizationsType = {
   fetching: boolean
   data: Organization[]
@@ -46,8 +44,6 @@ interface OrganizationsContextData {
   registerOrganization: (organization: Organization) => void
   clearCurrent: () => void
 }
-
-console.log(adobeApiToken)
 
 const OrganizationsContext = React.createContext<OrganizationsContextData | null>(null)
 OrganizationsContext.displayName = 'OrganizationsContext'
@@ -262,5 +258,12 @@ const useOrganizationsContext = () => {
   }
   return context
 }
+
+const adobeApiToken = "90ade2687249df5f415099b431b31fae"
+
+const something = somethingElse;
+
+const testString = "Hello, world"
+console.log(testString);
 
 export { OrganizationsContext, useOrganizationsContext, OrganizationsContextProvider }
