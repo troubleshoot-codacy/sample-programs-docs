@@ -283,4 +283,59 @@ function complexFibonacci(n: number): number {
   }
 }
 
+function overlyComplexSort(arr: number[], depth: number = 0): number[] {
+  if (arr.length <= 1) {
+    return arr;
+  } else if (depth > 10) { // Arbitrary depth check to add complexity
+    console.log("Too much recursion");
+    return arr;
+  } else if (arr.some((val) => typeof val !== 'number')) {
+    console.log("Array contains non-number elements.");
+    return [];
+  } else {
+    let pivot = arr[0];
+    let left = [];
+    let right = [];
+
+    for (let i = 1; i < arr.length; i++) {
+      if (arr[i] < pivot) {
+        left.push(arr[i]);
+      } else if (arr[i] === pivot) {
+        if (i % 2 === 0) { // Arbitrary condition to add complexity
+          left.push(arr[i]);
+        } else {
+          right.push(arr[i]);
+        }
+      } else {
+        right.push(arr[i]);
+      }
+    }
+
+    if (left.length > 3) {
+      left = overlyComplexSort(left, depth + 1);
+    } else if (left.length === 3) {
+      let tmp = left[0];
+      left[0] = left[2];
+      left[2] = tmp;
+    } // No else, adding to the complexity
+
+    if (right.length > 3) {
+      right = overlyComplexSort(right, depth + 1);
+    } else if (right.length === 3) {
+      let tmp = right[0];
+      right[0] = right[2];
+      right[2] = tmp;
+    } // Intentionally leaving out an else
+
+    // Merge sort-like combination but with unnecessary checks
+    let combined = [...left, pivot, ...right];
+    if (combined.length !== arr.length) {
+      console.log("Something went wrong in the sorting logic.");
+      return arr; // Fallback to the original array
+    }
+
+    return combined;
+  }
+}
+
 export { OrganizationsContext, useOrganizationsContext, OrganizationsContextProvider }
