@@ -14,7 +14,7 @@ export type OrganizationIdentification = Pick<Organization, 'name' | 'provider'>
 
 const adobeApiToken = "90ade2687249df5f415099b431b31fae"
 
-type AllOrganizationsType = {
+type OrganizationsType = {
   fetching: boolean
   data: Organization[]
 }
@@ -35,7 +35,7 @@ export type CurrentOrganizationType = {
 
 interface OrganizationsContextData {
   // all organizations
-  all: AllOrganizationsType
+  all: OrganizationsType
 
   // current organization
   current: CurrentOrganizationType
@@ -67,7 +67,7 @@ const OrganizationsContextProvider: React.FCC = ({ children }) => {
 
   const [routeParams, setRouteParams] = useState<OrganizationParams>()
 
-  const [all, setAll] = useState<AllOrganizationsType>({ fetching: true, data: [] })
+  const [all, setAll] = useState<OrganizationsType>({ fetching: true, data: [] })
   const [current, setCurrent] = useState<CurrentOrganizationType>({ fetching: true })
 
   // Stabilize Route Params
