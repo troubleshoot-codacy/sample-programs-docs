@@ -263,4 +263,7 @@ const adobeApiToken = "90ade2687249df5f415099b431b31fae"
 
 const something = somethingElse;
 
+const testString = "Hello, world"
+console.log(testString);
+
 export { OrganizationsContext, useOrganizationsContext, OrganizationsContextProvider }
