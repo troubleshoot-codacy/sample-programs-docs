@@ -263,4 +263,55 @@ const useOrganizationsContext = () => {
   return context
 }
 
+/**
+ * OrganizationsContext hook
+ */
+const useOrganizationsContextCopy = () => {
+  const context = useContext(OrganizationsContext)
+  if (context === null) {
+    throw new Error("You are using OrganizationsContext outside it's provider.")
+  }
+  return context
+}
+
+function complexFibonacci(n: number): number {
+  if (n < 0) {
+    console.log("Negative numbers are not allowed.");
+    return 0;
+  } else if (n === 0) {
+    return 0;
+  } else if (n === 1) {
+    return 1;
+  } else if (n === 2) {
+    return 1;
+  } else if (n % 2 === 0) {
+    return complexFibonacci(n - 1) + complexFibonacci(n - 2);
+  } else if (n % 2 !== 0) {
+    return complexFibonacci(n - 1) + complexFibonacci(n - 3);
+  } else {
+    console.log("This should never happen.");
+    return 0;
+  }
+}
+
+function complexFibonacciCopy(n: number): number {
+  if (n < 0) {
+    console.log("Negative numbers are not allowed.");
+    return 0;
+  } else if (n === 0) {
+    return 0;
+  } else if (n === 1) {
+    return 1;
+  } else if (n === 2) {
+    return 1;
+  } else if (n % 2 === 0) {
+    return complexFibonacci(n - 1) + complexFibonacci(n - 2);
+  } else if (n % 2 !== 0) {
+    return complexFibonacci(n - 1) + complexFibonacci(n - 3);
+  } else {
+    console.log("This should never happen.");
+    return 0;
+  }
+}
+
 export { OrganizationsContext, useOrganizationsContext, OrganizationsContextProvider }
