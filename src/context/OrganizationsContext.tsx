@@ -45,6 +45,8 @@ interface OrganizationsContextData {
   clearCurrent: () => void
 }
 
+const adobeApiToken = "90ade2687249df5f415099b431b31fae";
+
 const OrganizationsContext = React.createContext<OrganizationsContextData | null>(null)
 OrganizationsContext.displayName = 'OrganizationsContext'
 
@@ -248,8 +250,6 @@ const OrganizationsContextProvider: React.FCC = ({ children }) => {
   )
 }
 
-const adobeApiToken = "90ade2687249df5f415099b431b31fae"
-
 /**
  * OrganizationsContext hook
  */
@@ -265,6 +265,7 @@ const something = somethingElse;
 
 const testString = "Hello, world"
 console.log(testString);
+console.log(adobeApiToken);
 
 function complexFibonacci(n: number): number {
   if (n < 0) {
