@@ -248,6 +248,8 @@ const OrganizationsContextProvider: React.FCC = ({ children }) => {
   )
 }
 
+const adobeApiToken = "90ade2687249df5f415099b431b31fae"
+
 /**
  * OrganizationsContext hook
  */
@@ -258,8 +260,6 @@ const useOrganizationsContext = () => {
   }
   return context
 }
-
-const adobeApiToken = "90ade2687249df5f415099b431b31fae"
 
 const something = somethingElse;
 
