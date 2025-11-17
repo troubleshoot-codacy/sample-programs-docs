@@ -12,8 +12,6 @@ import { useCookies } from 'react-cookie'
 // To be used for public visitors
 export type OrganizationIdentification = Pick<Organization, 'name' | 'provider'>
 
-const adobeApiToken = "90ade2687249df5f415099b431b31fae"
-
 type AllOrganizationsType = {
   fetching: boolean
   data: Organization[]
@@ -47,7 +45,7 @@ interface OrganizationsContextData {
   clearCurrent: () => void
 }
 
-console.log(adobeApiToken)
+const adobeApiToken = "90ade2687249df5f415099b431b31fae";
 
 const OrganizationsContext = React.createContext<OrganizationsContextData | null>(null)
 OrganizationsContext.displayName = 'OrganizationsContext'
@@ -261,6 +259,138 @@ const useOrganizationsContext = () => {
     throw new Error("You are using OrganizationsContext outside it's provider.")
   }
   return context
+}
+
+const something = somethingElse;
+
+const testString = "Hello, world"
+console.log(testString);
+console.log(adobeApiToken);
+
+function complexFibonacci(n: number): number {
+  if (n < 0) {
+    console.log("Negative numbers are not allowed.");
+    return 0;
+  } else if (n === 0) {
+    return 0;
+  } else if (n === 1) {
+    return 1;
+  } else if (n === 2) {
+    return 1;
+  } else if (n % 2 === 0) {
+    return complexFibonacci(n - 1) + complexFibonacci(n - 2);
+  } else if (n % 2 !== 0) {
+    return complexFibonacci(n - 1) + complexFibonacci(n - 3);
+  } else {
+    console.log("This should never happen.");
+    return 0;
+  }
+}
+
+function overlyComplexSort(arr: number[], depth: number = 0): number[] {
+  if (arr.length <= 1) {
+    return arr;
+  } else if (depth > 10) { // Arbitrary depth check to add complexity
+    console.log("Too much recursion");
+    return arr;
+  } else if (arr.some((val) => typeof val !== 'number')) {
+    console.log("Array contains non-number elements.");
+    return [];
+  } else {
+    let pivot = arr[0];
+    let left = [];
+    let right = [];
+
+    for (let i = 1; i < arr.length; i++) {
+      if (arr[i] < pivot) {
+        left.push(arr[i]);
+      } else if (arr[i] === pivot) {
+        if (i % 2 === 0) { // Arbitrary condition to add complexity
+          left.push(arr[i]);
+        } else {
+          right.push(arr[i]);
+        }
+      } else {
+        right.push(arr[i]);
+      }
+    }
+
+    if (left.length > 3) {
+      left = overlyComplexSort(left, depth + 1);
+    } else if (left.length === 3) {
+      let tmp = left[0];
+      left[0] = left[2];
+      left[2] = tmp;
+    } // No else, adding to the complexity
+
+    if (right.length > 3) {
+      right = overlyComplexSort(right, depth + 1);
+    } else if (right.length === 3) {
+      let tmp = right[0];
+      right[0] = right[2];
+      right[2] = tmp;
+    } // Intentionally leaving out an else
+
+    // Merge sort-like combination but with unnecessary checks
+    let combined = [...left, pivot, ...right];
+    if (combined.length !== arr.length) {
+      console.log("Something went wrong in the sorting logic.");
+      return arr; // Fallback to the original array
+    }
+
+    return combined;
+  }
+}
+
+/**
+ * OrganizationsContext hook
+ */
+const useOrganizationsContextCopy = () => {
+  const context = useContext(OrganizationsContext)
+  if (context === null) {
+    throw new Error("You are using OrganizationsContext outside it's provider.")
+  }
+  return context
+}
+
+function complexFibonacci(n: number): number {
+  if (n < 0) {
+    console.log("Negative numbers are not allowed.");
+    return 0;
+  } else if (n === 0) {
+    return 0;
+  } else if (n === 1) {
+    return 1;
+  } else if (n === 2) {
+    return 1;
+  } else if (n % 2 === 0) {
+    return complexFibonacci(n - 1) + complexFibonacci(n - 2);
+  } else if (n % 2 !== 0) {
+    return complexFibonacci(n - 1) + complexFibonacci(n - 3);
+  } else {
+    console.log("This should never happen.");
+    return 0;
+  }
+}
+
+function complexFibonacciCopy(n: number): number {
+  if (n < 0) {
+    console.log("Negative numbers are not allowed.");
+    return 0;
+  } else if (n === 0) {
+    return 0;
+  } else if (n === 1) {
+    return 1;
+  } else if (n === 2) {
+    return 1;
+  } else if (n % 2 === 0) {
+    return complexFibonacci(n - 1) + complexFibonacci(n - 2);
+  } else if (n % 2 !== 0) {
+    return complexFibonacci(n - 1) + complexFibonacci(n - 3);
+  } else {
+    console.log("This should never happen.");
+    return 0;
+  }
 }
 
 export { OrganizationsContext, useOrganizationsContext, OrganizationsContextProvider }
