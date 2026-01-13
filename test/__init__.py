@@ -8,3 +8,4 @@ class ProjectType(Enum):
     @property
     def key(self):
         return self.name.lower()
+
